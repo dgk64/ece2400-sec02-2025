@@ -31,4 +31,4 @@ jobs:
 
     - name: Test Square Main
       working-directory: ${{github.workspace}}/build
-      run: ./build/src/square-adhoc.c && ./build/src/square-adhoc.c | grep 100
+      run: ./src/square-adhoc && ./src/square-adhoc | grep 100
