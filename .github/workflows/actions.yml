@@ -4,13 +4,6 @@ on:
   push:
   pull_request:
 
-steps:
-  - name: Clear CMake cache
-    run: rm -rf /home/runner/work/ece2400-sec02-2025/ece2400-sec02-2025/build/CMakeCache.txt
-    steps:
-  - name: Run CMake
-    run: cmake -B /home/runner/work/ece2400-sec02-2025/ece2400-sec02-2025/build -S /home/runner/work/ece2400-sec02-2025/ece2400-sec02-2025 -DCMAKE_BUILD_TYPE=Release
-
 jobs:
 
   build:
