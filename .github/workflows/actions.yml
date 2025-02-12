@@ -4,6 +4,13 @@ on:
   push:
   pull_request:
 
+steps:
+  - name: Clear CMake cache
+    run: rm -rf /home/runner/work/ece2400-sec02-2025/ece2400-sec02-2025/build/CMakeCache.txt
+    steps:
+  - name: Run CMake
+    run: cmake -B /home/runner/work/ece2400-sec02-2025/ece2400-sec02-2025/build -S /home/runner/work/ece2400-sec02-2025/ece2400-sec02-2025 -DCMAKE_BUILD_TYPE=Release
+
 jobs:
 
   build:
@@ -11,6 +18,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: docker://danger89/cmake:latest
+
+    - name: Clear CMake cache
+      run: rm -rf /home/runner/work/ece2400-sec02-2025/ece2400-sec02-2025/build/CMakeCache.txt
+
+    - name: Run CMake
+      run: cmake -B /home/runner/work/ece2400-sec02-2025/ece2400-sec02-2025/build -S /home/runner/work/ece2400-sec02-2025/ece2400-sec02-2025 -DCMAKE_BUILD_TYPE=Release
 
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
